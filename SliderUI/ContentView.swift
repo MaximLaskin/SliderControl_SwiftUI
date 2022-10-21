@@ -21,7 +21,12 @@ struct ContentView: View {
             LinearGradient(colors: [.mint, .white ], startPoint: .top, endPoint: .bottom)
             VStack {
                 Rectangle()
-                    .foregroundColor(.blue)
+                    .foregroundColor(
+                        Color(
+                        red: redSliderValue/255,
+                        green: greenSliderValue/255,
+                        blue: blueSliderValue/255,
+                        opacity: 1))
                     .frame(height: 140)
                     .cornerRadius(10)
                     .shadow(radius: 5)
@@ -30,11 +35,13 @@ struct ContentView: View {
                 ColorSliderView(value: $redSliderValue)
                 ColorSliderView(value: $greenSliderValue)
                 ColorSliderView(value: $blueSliderValue)
+
                 BigButtonView(title: "Reset") {
-                    print("Button pressed")
+                    redSliderValue = 0
+                    greenSliderValue = 0
+                    blueSliderValue = 0
                 }
                 Spacer()
-
             }
             .padding()
         }.ignoresSafeArea()
