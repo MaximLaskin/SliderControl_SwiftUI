@@ -20,26 +20,18 @@ struct ContentView: View {
                 .foregroundColor(.blue)
                 .frame(height: 140)
                 .cornerRadius(10)
+                .shadow(radius: 5)
 
             HStack {
                 Text("1")
                 Slider(value: $sliderValue)
                 Color(.green)
-                    .frame(width: 30, height: 30)
-
-            }
-            Button {
-                print("Button pressed!")
-            } label: {
-                Text("Reset")
-                    .bold()
-                    .frame(width: 200, height: 50)
-                    .foregroundColor(.indigo)
-                    .background(LinearGradient(colors: [.mint, .white], startPoint: .bottomLeading, endPoint: .topTrailing))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .frame(width: 45, height: 30)
+                    .cornerRadius(5)
                     .shadow(radius: 4)
-
-
+            }
+            BigButtonView(title: "Reset") {
+                print("Button pressed")
             }
             Spacer()
 
