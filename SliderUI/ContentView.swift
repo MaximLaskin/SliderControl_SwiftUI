@@ -29,10 +29,9 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .shadow(radius: 5)
 
-
-                ColorSliderView(value: $redSliderValue)
-                ColorSliderView(value: $greenSliderValue)
-                ColorSliderView(value: $blueSliderValue)
+                ColorSliderView(value: $redSliderValue, color: .red)
+                ColorSliderView(value: $greenSliderValue, color: .green)
+                ColorSliderView(value: $blueSliderValue, color: .blue)
 
                 BigButtonView(title: "Reset") {
                     redSliderValue = 0
@@ -44,15 +43,25 @@ struct ContentView: View {
             .padding()
         }.ignoresSafeArea()
     }
-
 }
 struct ColorSliderView: View {
     @Binding var value: Double
+    let color: Color
 
     var body: some View {
         HStack {
             Text("1").font(.subheadline)
-            Slider(value: $value, in: 0...255, step: 1) //диапазон и шаг
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [.black, color]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .mask(Slider(value: $value, in: 0...255, step: 1))
+
+                Slider(value: $value, in: 0...255, step: 1)
+                    .opacity(0.05)
+            }
             ZStack {
                 Color(.green)
                     .frame(width: 45, height: 30)
