@@ -20,8 +20,7 @@ struct ContentView: View {
     var body: some View {
 
         ZStack {
-            LinearGradient(colors: [.mint, .white ], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
+            OnboardingView()
             VStack {
                 Rectangle()
                     .foregroundColor(
