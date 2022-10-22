@@ -49,9 +49,11 @@ struct ContentView: View {
                 }
 
                 BigButtonView(title: "Reset") {
-                    redSliderValue = 0
-                    greenSliderValue = 0
-                    blueSliderValue = 0
+                    withAnimation {
+                        redSliderValue = 0
+                        greenSliderValue = 0
+                        blueSliderValue = 0
+                    }
                 }
                 Spacer()
                     .frame(height: 200)
@@ -70,7 +72,8 @@ struct ColorSliderView: View {
 
     var body: some View {
         HStack {
-            Text("1").font(.subheadline)
+            Text(lround(value).formatted()).font(.subheadline)
+                .frame(width: 28)
             ZStack {
                 LinearGradient(
                     gradient: Gradient(colors: [.black, color]),
@@ -83,15 +86,15 @@ struct ColorSliderView: View {
                     .opacity(0.05)
             }
             ZStack {
-                Color(.green)
-                    .frame(width: 45, height: 30)
-                    .cornerRadius(5)
-                    .shadow(radius: 4)
-                Text(lround(value).formatted()).font(.subheadline)
+
             }
-            TextField("", text: $textFieldValue)
+            TextField("", text: $textFieldValue, onEditingChanged:
+                        { (editingChanged) in
+                textFieldValue = value.formatted()
+            })
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 42)
+                .shadow(radius: 4)
 
         }
     }
