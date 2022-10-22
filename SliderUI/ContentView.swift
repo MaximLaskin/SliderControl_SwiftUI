@@ -13,25 +13,40 @@ struct ContentView: View {
     @State private var greenSliderValue = Double.random(in: 0...255)
     @State private var blueSliderValue = Double.random(in: 0...255)
 
+    @State private var redTextField = ""
+    @State private var greenTextField = ""
+    @State private var blueTextField = ""
+
     var body: some View {
 
         ZStack {
             LinearGradient(colors: [.mint, .white ], startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
             VStack {
                 Rectangle()
                     .foregroundColor(
                         Color(
-                        red: redSliderValue/255,
-                        green: greenSliderValue/255,
-                        blue: blueSliderValue/255,
-                        opacity: 1))
+                            red: redSliderValue/255,
+                            green: greenSliderValue/255,
+                            blue: blueSliderValue/255,
+                            opacity: 1))
                     .frame(height: 140)
                     .cornerRadius(10)
                     .shadow(radius: 5)
-
-                ColorSliderView(value: $redSliderValue, color: .red)
-                ColorSliderView(value: $greenSliderValue, color: .green)
-                ColorSliderView(value: $blueSliderValue, color: .blue)
+                VStack {
+                    ColorSliderView(
+                        value: $redSliderValue,
+                        color: .red,
+                        textFieldValue: $redTextField)
+                    ColorSliderView(
+                        value: $greenSliderValue,
+                        color: .green,
+                        textFieldValue: $greenTextField)
+                    ColorSliderView(
+                        value: $blueSliderValue,
+                        color: .blue,
+                        textFieldValue: $blueTextField)
+                }
 
                 BigButtonView(title: "Reset") {
                     redSliderValue = 0
@@ -39,14 +54,19 @@ struct ContentView: View {
                     blueSliderValue = 0
                 }
                 Spacer()
-            }
-            .padding()
-        }.ignoresSafeArea()
+                    .frame(height: 200)
+                /* без height элементы расползаются на весь экран, почему?
+        по задумке слайдеры должны быть близко друг к другу, на симуляторе 11 онидалеко друг от друга.
+                */
+            }.padding()
+        }
+
     }
 }
 struct ColorSliderView: View {
     @Binding var value: Double
     let color: Color
+    @Binding var textFieldValue:String
 
     var body: some View {
         HStack {
@@ -69,6 +89,10 @@ struct ColorSliderView: View {
                     .shadow(radius: 4)
                 Text(lround(value).formatted()).font(.subheadline)
             }
+            TextField("", text: $textFieldValue)
+                .textFieldStyle(.roundedBorder)
+                .frame(width: 42)
+
         }
     }
 }
