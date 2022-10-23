@@ -77,6 +77,13 @@ struct ContentView: View {
             }.padding()
         }
     }
+    private func checkTextFieldVaue() {
+//        if let _ = String(redTextField) {
+//            redTextField = ""
+//            return
+//        }
+    }
+
 }
 struct СolorChangeView: View {
     @Binding var value: Double
