@@ -20,7 +20,7 @@ struct ContentView: View {
     var body: some View {
 
         ZStack {
-            LinearGradient(colors: [.mint, .white ], startPoint: .top, endPoint: .bottom)
+            LinearGradient(colors: [.mint, .white], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack {
                 Rectangle()
@@ -34,15 +34,15 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .shadow(radius: 5)
                 VStack {
-                    ColorSliderView(
+                    СolorChangeView(
                         value: $redSliderValue,
                         color: .red,
                         textFieldValue: $redTextField)
-                    ColorSliderView(
+                    СolorChangeView(
                         value: $greenSliderValue,
                         color: .green,
                         textFieldValue: $greenTextField)
-                    ColorSliderView(
+                    СolorChangeView(
                         value: $blueSliderValue,
                         color: .blue,
                         textFieldValue: $blueTextField)
@@ -56,16 +56,15 @@ struct ContentView: View {
                     }
                 }
                 Spacer()
-                    .frame(height: 200)
-                /* без height элементы расползаются на весь экран, почему?
-        по задумке слайдеры должны быть близко друг к другу, на симуляторе 11 онидалеко друг от друга.
-                */
+                    .frame(height: 300)
+                /*
+                 Поместил слайдер в отдельное представление, но spacer всё еще не работает. Всё же как сократить расстояние между слайдерами?)
+                 */
             }.padding()
         }
-
     }
 }
-struct ColorSliderView: View {
+struct СolorChangeView: View {
     @Binding var value: Double
     let color: Color
     @Binding var textFieldValue:String
@@ -74,27 +73,20 @@ struct ColorSliderView: View {
         HStack {
             Text(lround(value).formatted()).font(.subheadline)
                 .frame(width: 28)
-            ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: [.black, color]),
-                    startPoint: .leading,
-                    endPoint: .trailing
-                )
-                .mask(Slider(value: $value, in: 0...255, step: 1))
+            SliderView(value: $value, color: color)
+                .onChange(of: value) { newValue in
+                    textFieldValue = value.formatted()
+                }
 
-                Slider(value: $value, in: 0...255, step: 1)
-                    .opacity(0.05)
-            }
-            ZStack {
-
-            }
-            TextField("", text: $textFieldValue, onEditingChanged:
+            TextField("",
+                      text: $textFieldValue,
+                      onEditingChanged:
                         { (editingChanged) in
                 textFieldValue = value.formatted()
             })
-                .textFieldStyle(.roundedBorder)
-                .frame(width: 42)
-                .shadow(radius: 4)
+            .textFieldStyle(.roundedBorder)
+            .frame(width: 50)
+            .shadow(radius: 4)
 
         }
     }
