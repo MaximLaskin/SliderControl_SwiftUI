@@ -10,6 +10,8 @@ import SwiftUI
 struct BigButtonView: View {
     let title: String
     let action: () -> Void
+    let startColor: Color
+    let endColor: Color
 
     var body: some View {
         Button(action: action) {
@@ -17,15 +19,16 @@ struct BigButtonView: View {
                 .bold()
                 .frame(width: 200, height: 50)
                 .foregroundColor(.indigo)
-                .background(LinearGradient(colors: [.mint, .white], startPoint: .bottomLeading, endPoint: .topTrailing))
+                .background(LinearGradient(colors: [startColor, endColor], startPoint: .bottomLeading, endPoint: .topTrailing))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(radius: 4)
+                .padding(.vertical, 5)
         }
     }
 }
 
 struct BigButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        BigButtonView(title: "Reset", action: {})
+        BigButtonView(title: "Reset", action: {}, startColor: .mint, endColor: .white)
     }
 }

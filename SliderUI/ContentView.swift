@@ -48,13 +48,27 @@ struct ContentView: View {
                         textFieldValue: $blueTextField)
                 }
 
-                BigButtonView(title: "Reset") {
-                    withAnimation {
-                        redSliderValue = 0
-                        greenSliderValue = 0
-                        blueSliderValue = 0
-                    }
-                }
+                BigButtonView(
+                    title: "Done",
+                    action: {
+                        print("Done button pressed")
+                    },
+                    startColor: .mint,
+                    endColor: .white
+                )
+
+                BigButtonView(
+                    title: "Reset",
+                    action: {
+                        withAnimation {
+                            redSliderValue = 0
+                            greenSliderValue = 0
+                            blueSliderValue = 0
+                        }
+                    },
+                    startColor: .red,
+                    endColor: .white
+                )
                 Spacer()
                     .frame(height: 300)
                 /*
@@ -67,7 +81,7 @@ struct ContentView: View {
 struct СolorChangeView: View {
     @Binding var value: Double
     let color: Color
-    @Binding var textFieldValue:String
+    @Binding var textFieldValue: String
 
     var body: some View {
         HStack {
