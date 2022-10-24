@@ -37,15 +37,15 @@ struct ContentView: View {
                     СolorChangeView(
                         value: $redSliderValue,
                         color: .red,
-                        textFieldValue: $redTextField)
+                        textFieldValue: redTextField)
                     СolorChangeView(
                         value: $greenSliderValue,
                         color: .green,
-                        textFieldValue: $greenTextField)
+                        textFieldValue: greenTextField)
                     СolorChangeView(
                         value: $blueSliderValue,
                         color: .blue,
-                        textFieldValue: $blueTextField)
+                        textFieldValue: blueTextField)
                 }
 
                 BigButtonView(
@@ -70,7 +70,7 @@ struct ContentView: View {
                     endColor: .white
                 )
                 Spacer()
-                    .frame(height: 300)
+//                    .frame(height: 300)
                 /*
                  Поместил слайдер в отдельное представление, но spacer всё еще не работает. Всё же как сократить расстояние между слайдерами?)
                  */
@@ -78,17 +78,17 @@ struct ContentView: View {
         }
     }
     private func checkTextFieldVaue() {
-//        if let _ = String(redTextField) {
-//            redTextField = ""
-//            return
-//        }
+        if let _ = Double(redTextField) {
+            redTextField = ""
+            return
+        }
     }
 
 }
 struct СolorChangeView: View {
     @Binding var value: Double
     let color: Color
-    @Binding var textFieldValue: String
+    @State var textFieldValue: String
 
     var body: some View {
         HStack {
@@ -103,13 +103,13 @@ struct СolorChangeView: View {
                       text: $textFieldValue,
                       onEditingChanged:
                         { (editingChanged) in
-                textFieldValue = value.formatted()
+                value = Double(textFieldValue) ?? 0
             })
             .textFieldStyle(.roundedBorder)
             .frame(width: 50)
             .shadow(radius: 4)
 
-        }
+        }.onAppear() // не работает
     }
 }
 struct ContentView_Previews: PreviewProvider {
