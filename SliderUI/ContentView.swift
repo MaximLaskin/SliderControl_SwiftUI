@@ -23,16 +23,11 @@ struct ContentView: View {
             LinearGradient(colors: [.mint, .white], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack {
-                Rectangle()
-                    .foregroundColor(
-                        Color(
-                            red: redSliderValue/255,
-                            green: greenSliderValue/255,
-                            blue: blueSliderValue/255,
-                            opacity: 1))
-                    .frame(height: 140)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
+                ColorView(
+                    red: redSliderValue,
+                    green: greenSliderValue,
+                    blue: blueSliderValue
+                )
                 VStack {
                     СolorChangeView(
                         value: $redSliderValue,
