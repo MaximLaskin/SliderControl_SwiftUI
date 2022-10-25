@@ -29,6 +29,10 @@ struct BigButtonView: View {
 
 struct BigButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        BigButtonView(title: "Reset", action: {}, startColor: .mint, endColor: .white)
+        ZStack {
+            Color.green
+                .ignoresSafeArea()
+            BigButtonView(title: "Reset", action: {}, startColor: .mint, endColor: .white)
+        }
     }
 }

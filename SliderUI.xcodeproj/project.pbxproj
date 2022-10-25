@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		431828CC2905752700B6A0C4 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431828CB2905752700B6A0C4 /* SliderView.swift */; };
 		433A1D442907F358004AD207 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A1D432907F358004AD207 /* ColorView.swift */; };
+		433A1D4629081C90004AD207 /* ColorValueTFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A1D4529081C90004AD207 /* ColorValueTFView.swift */; };
 		4387BF412901DF350078D0FE /* SliderUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387BF402901DF350078D0FE /* SliderUIApp.swift */; };
 		4387BF432901DF350078D0FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387BF422901DF350078D0FE /* ContentView.swift */; };
 		4387BF452901DF370078D0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4387BF442901DF370078D0FE /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		431828CB2905752700B6A0C4 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		433A1D432907F358004AD207 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		433A1D4529081C90004AD207 /* ColorValueTFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValueTFView.swift; sourceTree = "<group>"; };
 		4387BF3D2901DF350078D0FE /* SliderUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SliderUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387BF402901DF350078D0FE /* SliderUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderUIApp.swift; sourceTree = "<group>"; };
 		4387BF422901DF350078D0FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 		4387BF3F2901DF350078D0FE /* SliderUI */ = {
 			isa = PBXGroup;
 			children = (
+				433A1D4529081C90004AD207 /* ColorValueTFView.swift */,
 				433A1D432907F358004AD207 /* ColorView.swift */,
 				4387BF402901DF350078D0FE /* SliderUIApp.swift */,
 				4387BF422901DF350078D0FE /* ContentView.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				4387BF432901DF350078D0FE /* ContentView.swift in Sources */,
 				431828CC2905752700B6A0C4 /* SliderView.swift in Sources */,
+				433A1D4629081C90004AD207 /* ColorValueTFView.swift in Sources */,
 				4387BF412901DF350078D0FE /* SliderUIApp.swift in Sources */,
 				43BC28BB2902A4AC007D9DD1 /* BigButtonView.swift in Sources */,
 				433A1D442907F358004AD207 /* ColorView.swift in Sources */,
